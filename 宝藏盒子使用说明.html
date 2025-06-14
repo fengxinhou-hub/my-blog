@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宝藏盒子使用说明</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- 自定义配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#D8A7B1',
+            secondary: '#A7C7E7',
+            accent: '#F8C8DC',
+            light: '#FFF5F7',
+            dark: '#5D5C61'
+          },
+          fontFamily: {
+            nunito: ['Nunito', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .bg-gradient-soft {
+        background: linear-gradient(135deg, #D8A7B1 0%, #A7C7E7 100%);
+      }
+      .transition-bounce {
+        transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+    }
+  </style>
+  
+  <style>
+    body {
+      background-color: #FFF5F7;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(216, 167, 177, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 80% 30%, rgba(167, 199, 231, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 40% 70%, rgba(248, 200, 220, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 90%, rgba(216, 167, 177, 0.05) 0%, transparent 20%);
+      background-attachment: fixed;
+    }
+    
+    .cloud {
+      position: absolute;
+      opacity: 0.3;
+      filter: blur(5px);
+      animation: float 20s linear infinite;
+    }
+    
+    .cloud-1 {
+      top: 10%;
+      left: -100px;
+      width: 200px;
+      height: 100px;
+      animation-duration: 40s;
+    }
+    
+    .cloud-2 {
+      top: 30%;
+      right: -150px;
+      width: 250px;
+      height: 120px;
+      animation-duration: 50s;
+      animation-direction: reverse;
+    }
+    
+    .cloud-3 {
+      top: 60%;
+      left: -200px;
+      width: 300px;
+      height: 150px;
+      animation-duration: 60s;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(100vw + 300px));
+      }
+    }
+    
+    .star {
+      position: absolute;
+      color: #ffffff;
+      opacity: 0.7;
+      animation: sparkle 3s infinite;
+    }
+    
+    @keyframes sparkle {
+      0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+      }
+      50% {
+        opacity: 0.8;
+        transform: scale(1.2);
+      }
+    }
+    
+    .step-card {
+      transition: all 0.3s ease;
+    }
+    
+    .step-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .heart {
+      display: inline-block;
+      animation: heartbeat 1.5s infinite;
+    }
+    
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.2);
+      }
+      40% {
+        transform: scale(0.9);
+      }
+      60% {
+        transform: scale(1.2);
+      }
+    }
+  </style>
+</head>
+<body class="font-nunito text-dark min-h-screen flex flex-col">
+  <!-- 装饰元素 -->
+  <div class="cloud cloud-1" style="background: rgba(255,255,255,0.8); border-radius: 50% 50% 30% 30% / 70% 70% 30% 30%;"></div>
+  <div class="cloud cloud-2" style="background: rgba(255,255,255,0.8); border-radius: 50% 50% 30% 30% / 70% 70% 30% 30%;"></div>
+  <div class="cloud cloud-3" style="background: rgba(255,255,255,0.8); border-radius: 50% 50% 30% 30% / 70% 70% 30% 30%;"></div>
+  
+  <div class="star" style="top: 15%; left: 15%; font-size: 12px;"><i class="fa fa-star"></i></div>
+  <div class="star" style="top: 25%; left: 85%; font-size: 16px;"><i class="fa fa-star"></i></div>
+  <div class="star" style="top: 75%; left: 25%; font-size: 14px;"><i class="fa fa-star"></i></div>
+  <div class="star" style="top: 85%; left: 75%; font-size: 10px;"><i class="fa fa-star"></i></div>
+  
+  <!-- 主容器 -->
+  <div class="container mx-auto px-4 py-12 flex-grow flex flex-col justify-center">
+    <!-- 标题卡片 -->
+    <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden mb-8 transform transition-all hover:shadow-2xl">
+      <div class="bg-gradient-soft p-8 text-center">
+        <h1 class="text-[clamp(1.8rem,5vw,2.8rem)] font-bold text-white text-shadow mb-2">宝藏盒子使用说明</h1>
+        <p class="text-[clamp(1rem,2vw,1.2rem)] text-white/90">来自小鑫同学的心意 💌</p>
+      </div>
+      
+      <div class="p-8">
+        <!-- 欢迎信息 -->
+        <div class="mb-8 text-center">
+          <p class="text-lg text-dark/80 mb-4">哈喽～竟然被聪明小章发现了！</p>
+          <p class="text-lg text-dark/80 mb-4">下次我要藏好一点了！</p>
+          <p class="text-lg text-dark/80 mb-4">没错，</p>
+          <p class="text-lg font-medium mb-6">我就是此宝藏盒子的使用说明啦～</p>
+          
+          <p class="text-lg text-dark/80 mb-4">我呢，是小鑫同学派来收藏你的心情和情绪的～</p>
+          <p class="text-lg text-dark/80 italic">（放心！除了你想要分享给她看，我是不会告诉她我和你之间的小秘密哒）</p>
+        </div>
+        
+        <!-- 使用步骤 -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-bold text-primary mb-6 text-center">使用说明</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- 步骤1 -->
+            <div class="step-card bg-light rounded-xl p-6 shadow-lg border border-primary/10">
+              <div class="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <span class="text-xl font-bold text-primary">1</span>
+              </div>
+              <h3 class="text-xl font-semibold text-center mb-3">展开覆膜</h3>
+              <p class="text-center text-dark/70">把覆膜轻轻展开～</p>
+            </div>
+            
+            <!-- 步骤2 -->
+            <div class="step-card bg-light rounded-xl p-6 shadow-lg border border-primary/10">
+              <div class="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <span class="text-xl font-bold text-primary">2</span>
+              </div>
+              <h3 class="text-xl font-semibold text-center mb-3">粘贴收藏</h3>
+              <p class="text-center text-dark/70">把想收藏的"好东西"轻轻粘到已打开覆膜的白色纸板上！</p>
+            </div>
+            
+            <!-- 步骤3 -->
+            <div class="step-card bg-light rounded-xl p-6 shadow-lg border border-primary/10">
+              <div class="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <span class="text-xl font-bold text-primary">3</span>
+              </div>
+              <h3 class="text-xl font-semibold text-center mb-3">刮平粘好</h3>
+              <p class="text-center text-dark/70">将覆膜用小刮板刮平粘好～</p>
+            </div>
+          </div>
+          
+          <div class="mt-6 text-center">
+            <p class="text-lg font-medium">完成这3步，</p>
+            <p class="text-lg font-medium">你就将你最近的心情和情绪收藏好啦～</p>
+          </div>
+        </div>
+        
+        <!-- 额外功能 -->
+        <div class="mb-8 p-6 bg-accent/10 rounded-xl border border-accent/20">
+          <h2 class="text-xl font-bold text-accent mb-4 flex items-center">
+            <i class="fa fa-star mr-2"></i> 额外功能
+          </h2>
+          <p class="text-dark/80 mb-4">不过我最一开始，是戴着"集邮"的任务来的！</p>
+          <p class="text-dark/80 mb-4">当然，小鑫同学知道小章同学超级喜欢拍照📸和记录生活！</p>
+          <p class="text-dark/80 mb-4">所以，我的功能也变的强大起来～</p>
+          <p class="text-dark/80 font-medium">没错！你还可以在我身上写写画画～（也是小鑫告诉我，你写的字很漂亮～嘻嘻）</p>
+        </div>
+        
+        <!-- 结束语 -->
+        <div class="text-center">
+          <p class="text-lg text-dark/80 mb-4">好啦，</p>
+          <p class="text-lg text-dark/80 mb-4">我就把我交给你啦！</p>
+          <p class="text-lg text-dark/80 mb-4">坏情绪交给我处理，</p>
+          <p class="text-lg text-dark/80 mb-6">好心情我帮你收藏～</p>
+          
+          <p class="text-xl font-bold text-primary mb-2">发挥你的想象力！开始创造把吧～</p>
+          <p class="heart text-2xl text-primary"><i class="fa fa-heart"></i></p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer class="text-center text-dark/50 text-sm py-4">
+      <p>来自小鑫同学的专属礼物 · <span id="current-date">2025年6月14日</span></p>
+    </footer>
+  </div>
+  
+  <script>
+    // 设置当前日期
+    document.addEventListener('DOMContentLoaded', function() {
+      const now = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('current-date').textContent = now.toLocaleDateString('zh-CN', options);
+    });
+  </script>
+</body>
+</html>
